@@ -1,0 +1,18 @@
+version: '3'
+services:
+  service-discovery:
+    image: eureka-server:latest
+    ports:
+     - "8761:8761"
+  worker-service:
+    image: hello-service:latest
+    environment:
+      - EUREKA_HOST=service-discovery
+      - EUREKA_PORT=8761
+  user-service:
+    image: user-service:latest
+    ports:
+      - "7211:7211"
+    environment:
+      - EUREKA_HOST=service-discovery
+      - EUREKA_PORT=8761
