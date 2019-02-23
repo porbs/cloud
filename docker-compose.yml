@@ -23,3 +23,6 @@ services:
     environment:
       - EUREKA_HOST=service-discovery
       - EUREKA_PORT=8761
+      - USER_SERVICE_URI=user-service:7211
+      - SECOND_SERVICE_URI=second-service:7212
+

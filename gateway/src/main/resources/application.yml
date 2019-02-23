@@ -6,8 +6,8 @@ server:
   port: 8080
 
 uri:
-  userService: http://${USER_SERVICE_URI}
-  secondService: http://${SECOND_SERVICE_URI}
+  userService: http://${USER_SERVICE_URI:localhost:7211}
+  secondService: http://${SECOND_SERVICE_URI:localhost:7212}
 
 eureka:
   client:
@@ -17,3 +17,8 @@ eureka:
       leaseRenewalIntervalInSeconds: 10
       metadataMap:
         instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.cloud.config: DEBUG
