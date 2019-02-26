@@ -16,3 +16,11 @@ services:
     environment:
       - EUREKA_HOST=service-discovery
       - EUREKA_PORT=8761
+  js-eureka-service:
+    image: js-eureka-client:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - EUREKA_HOST=service-discovery
+      - EUREKA_PORT=8761
+      - USER_SERVICE_URI=user-service:7211
